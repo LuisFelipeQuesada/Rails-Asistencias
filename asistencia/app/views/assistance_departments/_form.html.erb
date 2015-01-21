@@ -1,0 +1,25 @@
+<%= form_for(@assistance_department) do |f| %>
+  <% if @assistance_department.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assistance_department.errors.count, "error") %> prohibited this assistance_department from being saved:</h2>
+
+      <ul>
+      <% @assistance_department.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :assistance_id %><br />
+    <%= f.number_field :assistance_id %>
+  </div>
+  <div class="field">
+    <%= f.label :department_id %><br />
+    <%= f.number_field :department_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

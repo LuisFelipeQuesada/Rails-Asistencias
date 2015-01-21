@@ -1,0 +1,23 @@
+<h1>Listing assistance_types</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assistance_types.each do |assistance_type| %>
+  <tr>
+    <td><%= assistance_type.type %></td>
+    <td><%= link_to 'Show', assistance_type %></td>
+    <td><%= link_to 'Edit', edit_assistance_type_path(assistance_type) %></td>
+    <td><%= link_to 'Destroy', assistance_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Assistance type', new_assistance_type_path %>

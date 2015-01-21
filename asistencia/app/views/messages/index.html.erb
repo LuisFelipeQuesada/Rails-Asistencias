@@ -1,0 +1,38 @@
+<div>
+	<% if @root == "student" %>
+		<h1>Mensajes enviados</h1>
+	<% else %>
+		<h1>Mensajes recibidos</h1>
+	<% end %>
+
+	<% if @root == "student" %>
+		<%= link_to 'Crear un mensaje', new_message_path %>
+	<% end %>
+	<br />
+	<br />
+
+	<table>
+		<tr>
+		  <th>Asunto</th>
+		  <th>Fecha de Envío</th>
+		  <th>Opciones</th>
+		</tr>
+
+		<% @messages.each do |message| %>
+			<tr>
+				<td><%= message.title %></td>
+				<td><%= message.created_at %></td>
+				<td id="centercol">
+					|<%= link_to 'Más detalles', message %>
+					<!--%= link_to 'Edit', edit_message_path(message) %-->
+					|<%= link_to 'Eliminar', message, method: :delete, data: { confirm: '¿Está seguro(a)?' } %>
+					<% if @root != "student" %>
+						|<%= link_to "Responder", responder_path(message) %>
+					<% end %>
+					|
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+

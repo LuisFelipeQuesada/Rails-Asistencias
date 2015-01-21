@@ -1,0 +1,11 @@
+class Mailer < ActionMailer::Base
+#  default from: "from@example.com"
+  
+  def respoderConsulta(info, from)
+  	@name = info['user_id']
+  	@to = info['contact_to']
+  	@title = info['title']
+  	@body = info['body']
+  	mail(:to => @to, :subject => @body, :from => from)
+  end
+end

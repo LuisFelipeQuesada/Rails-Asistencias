@@ -1,0 +1,30 @@
+// Place all the styles related to the Search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#container {
+	padding-bottom:8%;
+	div {
+		padding:0;
+		fieldset {
+			width:96%;
+			#search_form {
+				float:left;
+				width:60%;
+				#sub_search_left {
+					float:left;
+				}
+				#sub_search_right {
+					float:right;
+				}
+			}
+			#search_results {
+				float:left;
+				width:30%;
+				ul {
+					padding-left:15px;
+				}
+			}
+		}
+	}
+}
+

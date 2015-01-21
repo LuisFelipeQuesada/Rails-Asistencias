@@ -1,0 +1,6 @@
+<h1>Editar asistencia</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Ver', @assistance %> |
+<%= link_to 'Volver', assistances_path %>

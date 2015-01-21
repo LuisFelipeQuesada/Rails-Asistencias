@@ -1,0 +1,45 @@
+class AdministrativeUser < ActiveRecord::Base
+  belongs_to :department
+  attr_accessible :password, :username, :department_id, :pass_salt
+  
+  # Callback que se realiza para encriptar el password
+  before_save :encrypt_password
+  
+  # Autenticar usuario
+  # Entradas: Recibe el correo y el password
+  # Proceso: El método busca el usurio con el correo dado en el sistema y obtiene su salt, al password ingresado por
+  # 		 el usuario se le aplica el salt y se valida su igualdad
+  # Salidas: El usuario puede ingresar al sistema
+  def self.authenticate(username, password)
+  	user = find_by_username(username)
+  	if user && user.password == BCrypt::Engine.hash_secret(password, user.pass_salt)
+  		user
+  	else
+  		nil
+  	end
+  end
+  
+  # Encriptar password
+  # Entradas: No recibe ninguna
+  # Proceso: El método genera un salt y con este encripta el password
+  # Salidas: No retorna el ninguna salida
+  def encrypt_password
+  	if password.present?
+  		self.pass_salt = BCrypt::Engine.generate_salt
+  		self.password = BCrypt::Engine.hash_secret(password, pass_salt)
+  	end
+  end
+  
+  # create_session_for_registered_user(username, password)
+  # Entradas: El usuario y el password
+  # Proceso: Hace una llamada al método autheticate
+  # Salidas: No retorna el ninguna salida
+  def create_session_for_registered_user(username, password)
+  	user = AdministrativeUser.authenticate(username, password)
+  end
+  
+  # Validaciones
+  validates :password, :presence => {:message => "Debe ingresar el nombre del autor o al menos la inicial de este"}
+  validates :username, :presence => {:message => "Debe ingresar las horas que requiere la asistencia"}
+end
+

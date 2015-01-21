@@ -1,0 +1,41 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+		<div class="field">
+			<%= f.label :title, "Asunto" %><br />
+			<%= f.text_field :title %>
+			<div id="message_title_errors"></div>
+		</div>
+		<div class="field">
+			<%= f.label :user_id, "Nombre" %><br />
+			<%= f.text_field :user_id, :value => session[:current_user][:name]  %>
+		</div>
+		<div class="field">
+			<%= f.label :contact_to, "Correo Electrónico" %><br />
+			<%= f.text_field :contact_to %>
+			<div id="message_contact_to_errors"></div>
+		</div>
+		<div class="field">
+			<%= f.label :department_id, "Seleccione el departamento al que desea enviar la consulta" %><br />
+			<% dep_array = Department.all.map { |dep| [dep.name, dep.id] } %>
+			<%= f.select :department_id, options_for_select(dep_array, @message.department_id) %>
+		</div>
+		<div class="field">
+			<%= f.label :body, "Mensaje" %><br />
+			<%= f.text_area(:body, :size=>"40x6")  %>
+			<div id="message_body_errors"></div>
+		</div>
+		<div class="actions">
+    	<%= link_to 'Volver', messages_path %> | <%= f.submit "Enviar"%>
+  	</div>
+<% end %>

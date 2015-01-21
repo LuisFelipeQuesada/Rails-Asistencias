@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TEC Asistencias</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<% if current_admin_user or current_user %>
+					<div id="info_user">
+						<p id="user_info">
+							<% if current_admin_user != nil %>
+								Usuario: <%= current_admin_user.username %> -
+								<%= link_to "Cerrar Sesión", logout_path, :class => "menu_link" %>
+							<% else %>
+								Usuario: <%= current_user[:name] %> -
+								<%= link_to "Cerrar Sesión",'/auth/logout', :class => "menu_link" %>
+							<% end %>
+						</p>
+					</div>
+					<div id="menu">
+						<ul>
+							| <li><%= link_to "Inicio", assistances_path, :class=>"menu_link" %></li> |
+							<% if current_admin_user and current_admin_user.username == "root" %>
+								<li><%= link_to "Departamentos", departments_path, :class=>"menu_link" %></li> |
+								<li><%= link_to "Usuarios Administrativos", administrative_users_path, :class=>"menu_link" %></li> |
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+			</div>
+			<div id="container">
+				<%= yield %>
+			</div>
+			<div id="footer">
+			</div>
+		</div>
+	</body>
+</html>
+
+
+

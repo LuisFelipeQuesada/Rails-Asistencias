@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Asunto:</b>
+  <%= @message.title %>
+</p>
+<p>
+  <b>Nombre:</b>
+  <%= @message.user.name %>
+</p>
+<p>
+  <b>Correo electrónico:</b>
+  <%= @message.user.email %>
+</p>
+<p>
+  <b>Departamento al que se le realiza la consulta:</b>
+  <%= @message.department.name %>
+</p>
+<p>
+  <b>Mensaje:</b>
+  <%= @message.body %>
+</p>
+<p>
+  <b>Fecha de envío:</b>
+  <%= @message.created_at %>
+</p>
+
+<!--%= link_to 'Editar', edit_message_path(@message) %--> |
+<%= link_to 'Volver', messages_path %>
+|

@@ -1,0 +1,31 @@
+<div>
+<h1>Listing Asistencias</h1>
+
+	<% if current_admin_user.username == "root" %>
+		<%= link_to 'Agregar Asistencia', new_assistance_department_path, :class=>"menu_link" %>
+		<!--%= link_to 'New Assistance department', new_assistance_department_path %-->
+	<% end %>
+<br />
+<table>
+  <tr>
+    <th>Asistencia</th>
+    <th>Departamento</th>
+    <th>Opciones</th>
+  </tr>
+
+<% @assistance_departments.each do |assistance_department| %>
+  <tr>
+    <td><%= assistance_department.assistance_id %></td>
+    <td><%= assistance_department.department_id %></td>
+    <td>
+		  <% if current_admin_user.username == "root" %>
+		  	<%= link_to 'Show', assistance_department %> |
+		  	<%= link_to 'Edit', edit_assistance_department_path(assistance_department) %> |
+		  	<%= link_to 'Destroy', assistance_department, method: :delete, data: { confirm: '¿Está seguro(a)?' } %>
+			<% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+</div>

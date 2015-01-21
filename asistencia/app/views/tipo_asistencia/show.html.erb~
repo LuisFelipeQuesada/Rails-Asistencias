@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @tipo_asistencium.tipo %>
+</p>
+
+
+<%= link_to 'Editar', edit_tipo_asistencium_path(@tipo_asistencium) %> |
+<%= link_to 'Volver', tipo_asistencia_path %>

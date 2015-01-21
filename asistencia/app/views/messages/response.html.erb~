@@ -1,0 +1,9 @@
+<%= form_for response_path do |f| %>
+	<div class="field">
+		<%= f.label :name, "Nombre" %><br />
+		<%= f.text_field :name %>
+	</div>
+		<div class="actions">
+		<%= link_to 'Volver', messages_path %>
+	</div>
+<% end %>

@@ -1,0 +1,31 @@
+<div>
+<h1>Lista de departamentos</h1>
+
+<% if current_admin_user.username == "root" %>
+	<%= link_to 'Nuevo Departamento', new_department_path %>
+<% end %>
+
+<br />
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Opciones</th>
+  </tr>
+
+<% @departments.each do |department| %>
+  <tr>
+    <td><%= department.name %></td>
+    <td>
+    <% if current_admin_user.username == "root" %>
+		  <%= link_to 'Ver', department %> |
+		  <%= link_to 'Editar', edit_department_path(department) %> |
+		  <%= link_to 'Eliminar', department, method: :delete, data: { confirm: '¿Está seguro(a)?' } %>
+		 <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+
+</div>

@@ -1,0 +1,74 @@
+// Place all the styles related to the AdminSessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body, div {
+	padding:0;
+	marin:0;
+}
+
+div {
+	&#login {
+		width: 35%;
+		margin: {
+			top:1%;
+			bottom:0;
+			left:auto;
+			right:auto;
+		}
+		clear:both;
+		padding:0px;
+		border: {
+			style: inset;
+			radius:10px;
+			width:1px;
+		}
+		h1 {
+			text-align: center;
+			padding-bottom:5px;
+			margin:0;
+			font: {
+				family:arial;
+			}
+		}
+		.col1 {
+			float:left;
+			width:20%;
+			margin:0%;
+		}
+		.col2 {
+			float:right;
+			margin:0%;
+		}
+		#row1 {
+			padding:5px;
+		}
+		#row2 {
+			padding-top:15px;
+			padding-bottom:15px;
+		}
+		#username {
+			float:right;
+			margin-right:5px;
+			width:180px;
+		}
+		#pass_hash{
+			float:right;
+			margin-right:7px;
+			width:180px;
+		}
+		#button {
+			padding: {
+				top:3px;
+				left:40%;
+				bottom:10px;
+			}
+		}
+		a {
+			color:#000;
+			&:hover {
+				color:#FF0000;
+			}
+		}
+	}
+}
+

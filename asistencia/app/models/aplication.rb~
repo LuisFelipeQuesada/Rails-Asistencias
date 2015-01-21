@@ -1,0 +1,4 @@
+class Aplication < ActiveRecord::Base
+  belongs_to :user, :assistance
+  attr_accessible :assistance_id, :user_id
+end

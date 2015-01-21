@@ -1,0 +1,31 @@
+<div>
+	<h1>Lista de usuarios administrativos</h1>
+
+	<% if current_admin_user.username == "root" %>
+		<%= link_to 'Crear un usuario administrativo', new_administrative_user_path %>
+	<% end %>
+
+	<br />
+	<br />
+
+	<table>
+		<tr>
+		  <th>Usuario</th>
+		  <th></th>
+		</tr>
+
+	<% @administrative_users.each do |administrative_user| %>
+		<tr>
+		  <td><%= administrative_user.username %></td>
+		  <td>
+		  	<% if current_admin_user.username == "root" %>
+					<!--%= link_to 'Ver', administrative_user %-->
+					<%= link_to 'Editar', edit_administrative_user_path(administrative_user) %> |
+					<%= link_to 'Eliminar', administrative_user, method: :delete, data: { confirm: '¿Está seguro(a)?' } %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+	</table>
+</div>
+

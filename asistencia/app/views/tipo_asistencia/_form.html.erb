@@ -1,0 +1,22 @@
+<%= form_for(@tipo_asistencium) do |f| %>
+  <% if @tipo_asistencium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_asistencium.errors.count, "error") %> prohibited this tipo_asistencium from being saved:</h2>
+
+      <ul>
+      <% @tipo_asistencium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tipo, "Nombre del tipo de asistencia" %><br />
+    <%= f.text_field :tipo %>
+    <p id="tipo_asistencia_errors"></p>
+  </div>
+  <div class="actions">
+    <%= link_to 'Volver', tipo_asistencia_path %> | <%= f.submit "Guardar" %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<div>
+	<h1>Tipos de Asistencias</h1>
+		<% if @root == "root" %>
+			<%= link_to 'Nuevo Tipo de Asistencia', new_tipo_asistencium_path %>
+		<% end %>
+
+	<br />
+	<br />
+
+	<table>
+		<tr>
+		  <th>Tipo</th>
+		  <% if @root == "root" %>
+			  <th>Opciones</th>
+			 <% end %>
+		</tr>
+
+	<% @tipo_asistencia.each do |tipo_asistencium| %>
+		<tr>
+		  <td><%= tipo_asistencium.tipo %></td>
+		  <!--td><%= link_to 'Más detalles', tipo_asistencium %></td-->
+			<% if @root == "root" %>
+				<td id="centercol">
+					| <%= link_to 'Editar', edit_tipo_asistencium_path(tipo_asistencium) %> |
+					<%= link_to 'Eliminar', tipo_asistencium, method: :delete, data: { confirm: '¿Está seguro(a)?' } %> |
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+	</table>
+</div>
+

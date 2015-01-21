@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Asistencia:</b>
+  <%= @aplication.assistance.name %>
+</p>
+
+<p>
+  <b>Nombre del postulante:</b>
+  <%= @aplication.user.name %>
+</p>
+
+
+<%= link_to 'Editar', edit_aplication_path(@aplication) %> |
+<%= link_to 'Volver', aplications_path %>

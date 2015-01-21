@@ -1,0 +1,38 @@
+<%= form_for @message, :url => {:controller=>"messages", :action=>"sendEmail", :method=>"put"} do |f| %>
+<!--%= raise @message.to_yaml %-->
+<!--
+	<%= fields_for @message.department do |dep| %>
+		<%= dep.text_field :email %>
+	<% end %>
+-->
+
+	<div class="field">
+		<%= fields_for @message.department do |dep| %>
+			<%= dep.label :email, "De:" %><br />
+			<%= dep.text_field :email %>
+		<% end %>
+	</div>
+	<div class="field">
+		<%= f.label :user_id, "Nombre" %><br />
+		<%= f.text_field :user_id, :value=>@message.user.name %>
+	</div>
+	<div class="field">
+		<%= f.label :contact_to, "Para" %><br />
+		<%= f.text_field :contact_to, :value=>@message.contact_to %>
+	</div>
+	<div class="field">
+		<%= f.label :title, "Asunto" %><br />
+		<%= f.text_field:title, :value=>@message.title %>
+	</div>
+	<div class="field">
+		<%= f.label :body, "Mensaje" %><br />
+		<%= f.text_area(:body, :size=>"38x6")  %>
+	</div>
+	<div class="actions">
+		<%= link_to 'Volver', messages_path %> | <%= f.submit "Enviar"%>
+	</div>
+<% end %>
+
+
+
+  

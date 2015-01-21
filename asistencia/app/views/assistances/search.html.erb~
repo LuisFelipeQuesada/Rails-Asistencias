@@ -1,0 +1,54 @@
+<div>
+	<fieldset>
+		<legend>Buscar</legend>
+			<div id="search_form">
+				<%= form_for @search, :url => search_path(@search), :method => :get do |f| %>
+					<fieldset>
+						<legend>Opciones</legend>
+						<div id="sub_search_left">
+								<p>
+									<%= f.label :name_contains, "Palabra Clave:" %>
+									<%= f.text_field :name_contains, :size => "15" %>
+								</p>
+								<p>
+									<%= f.label :department_name_contains, "Departamento:" %>
+									<%= f.text_field :department_name_contains, :size => "15" %>
+								</p>
+								<p>
+									<%= f.label :tipo_asistencium_tipo_contains, "Tipo de asistencia:" %>
+									<%= f.text_field :tipo_asistencium_tipo_contains, :size => "12" %>
+								</p>
+								<p>
+									<%= f.label :requirements_contains, "Requisitos:" %>
+									<%= f.text_field :requirements_contains, :size => "18" %>
+								</p>
+						</div>
+						<div id="sub_search_right">
+							<p>
+								<%= f.label :horas_gte, "Horas (mayor o igual):" %>
+								<%= f.number_field :horas_gte, :size => "10" %><br />
+								<%= f.label :horas_lte, "Horas (menor o igual):" %>
+								<%= f.number_field :horas_lte, :size => "10" %>
+							</p>
+							<p>
+								<%= f.label :notas_gte, "Notas (mayor o igual):" %>
+								<%= f.number_field :notas_gte, :size => "10" %><br />
+								<%= f.label :notas_lte, "Notas (menor o igual):" %>
+								<%= f.number_field :notas_lte, :size => "10" %>
+							</p>
+							<p><%= link_to 'Volver', assistances_path %> | <%= f.submit "Buscar" %></p>
+						</div>
+					</fieldset>
+			</div>
+			<div id="search_results">
+				<fieldset>
+					<legend>Resultados</legend>
+					<p>Los resultados de la búsqueda son:</p>
+					<% for assistance in @searched_assistances %>
+						<li><%= link_to assistance.name, assistance %></li>
+					<% end %>
+				</fieldset>
+			</div>
+		<% end %> <!-- Cierre del Form -->
+	</fieldset>
+</div>

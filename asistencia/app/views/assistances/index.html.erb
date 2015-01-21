@@ -1,0 +1,55 @@
+<div>
+	<h1>Lista de asistencias</h1>
+	
+	<% if @root == "root" %>
+		| <%= link_to 'Agregar Asistencia', new_assistance_path %> 
+	<% end %>
+		| <%= link_to 'Ver Tipos de Asistencias', tipo_asistencia_path %>
+		| <%= link_to 'Búsqueda', search_path %>
+	<% if @root == "student" %>
+		| <%= link_to 'Mis Solicitudes', aplications_path %>
+		| <%= link_to 'Comunicarse con los administradores', new_message_path %>
+	<% else %>
+		| <%= link_to 'Aplicaciones hechas por estudiantes', aplications_path %>
+		| <%= link_to 'Mensajes recibidos', messages_path %>
+	<% end %>
+	|
+<br />
+<br />
+<table>
+  <tr>
+    <th id="centercol">Nombre</th>
+    <th id="centercol">Departamento que solicita</th>
+    <th id="centercol">Dispobilidad</th>
+    <th id="centercol">Opciones</th>
+  </tr>
+
+<% @assistances.each do |assistance| %>
+  <tr>
+    <td><%= assistance.name %></td>
+    <td id="centercol"><%= assistance.department.name %></td>
+    <% if assistance.disponibilidad %>
+    	<td id="centercol">Disponible</td>
+    <% else %>
+    	<td id="centercol">No Disponible</td>
+    <% end %>
+    <td id="centercol">
+			| <%= link_to 'Más detalles', assistance %>
+			<% if @root == "student" %>
+				| <%= link_to 'Aplicar', {:controller => "aplications",
+																	:action => "create",
+																	:user_id => session[:current_user][:id],
+																	:assistance_id => assistance.id},
+																	:method => "post" %> |
+			<% end %>
+			<% if @root == "root" %>
+				| <%= link_to 'Editar', edit_assistance_path(assistance) %> |
+				| <%= link_to 'Eliminar', assistance, method: :delete, data: { confirm: '¿Está seguro(a)?' } %>
+				|
+			<% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</div>
+

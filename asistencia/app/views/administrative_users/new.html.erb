@@ -1,0 +1,10 @@
+<h1>Agregar usuario administrativo</h1>
+
+<%= render 'form' %>
+
+<% if !current_admin_user or !current_user %>
+	<%= link_to 'Volver', welcome_index_path, :class => "option_link" %>
+<% else %>
+	<%= link_to 'Volver', administrative_users_path, :class => "option_link" %>
+<% end %>
+

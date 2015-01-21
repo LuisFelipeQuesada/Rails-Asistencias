@@ -1,0 +1,40 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div {
+	margin-left:2%;
+	padding-bottom:1%;
+	h1 {
+		padding: {
+			left:2px;
+		}
+	}
+	table {
+		margin-left:2%;
+		#centercol {
+			text-align:center;
+		}
+		th, tr {
+			padding-left:30px;
+			padding-right:30px;
+			border: solid 1px #000;
+		}
+		td {
+			border: solid 1px #000;
+		}
+	}
+	line-height:25px;
+}
+
+#main {
+	#info {
+		float:left;
+	}
+	#email_form {
+		float:left;
+	}
+}
+
+
+

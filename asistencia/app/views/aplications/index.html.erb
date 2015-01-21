@@ -1,0 +1,37 @@
+<div>
+	<h1>Lista de aplicaciones a asistencia</h1>
+
+	<!--%= link_to 'Aplicar', new_aplication_path %-->
+
+	<br />
+
+	<table>
+		<tr>
+		  <th>Asistencia</th>
+		  <% if @root == "root" || @root == "noroot" %>
+				<th id="centercol">Usuario</th>
+			<% end %>
+		  <th>Opciones</th>
+		</tr>
+
+	<% @aplications.each do |aplication| %>
+		<tr>
+		  <td><%= aplication.assistance.name %></td>
+		  <% if @root == "root" || @root == "noroot" %>
+				<td id="centercol">
+					<%= aplication.user.name %>
+				</td>
+			<% end %>
+		  <td id="centercol">
+				<% if @root == "root" %>
+					<%= link_to 'Ver', aplication %> |
+					<%= link_to 'Editar', edit_aplication_path(aplication) %>
+				<% end %>
+			| <%= link_to 'Eliminar', aplication, method: :delete, data: { confirm: '¿Está seguro(a)?' } %>
+			|
+		  </td>
+		</tr>
+	<% end %>
+	</table>
+</div>
+

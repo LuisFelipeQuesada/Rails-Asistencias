@@ -1,0 +1,19 @@
+<div id="login">
+<h1>Iniciar sesión en el sistema</h1>
+<%= form_tag admin_sessions_path do %>
+		<div id="row1">
+			<%= label_tag 'username', 'Nombre de Usuario'%>
+			<%= text_field_tag :username, params[:username] %>
+			<div id="mail_errors"></div>
+		</div>
+		<div id="row2">
+			<%= label_tag :password %>
+			<%= password_field_tag :pass_hash %>
+			<div id="pass_errors"></div>
+		</div>
+		<div id="button">
+			<%= link_to "Volver", '/' %> | <%= submit_tag "Iniciar sesión" %>
+		</div>
+		<div style="padding-left:12%;"><%= link_to "Registrar un usuario para un departamento", new_administrative_user_path %></div>
+<% end %>
+</div>

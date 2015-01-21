@@ -1,0 +1,10 @@
+<div id="search">
+	<%= form_tag("/search", :method => "get") do %>
+		<%= label_tag(:q, "Buscar:") %>
+		<%= text_field_tag(:q) %>
+		<%= submit_tag("Search") %>
+	<% end %>
+</div>
+
+
+

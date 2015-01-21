@@ -1,0 +1,13 @@
+class ChangeNotasType < ActiveRecord::Migration
+  def change
+  	change_table :assistances do |t|
+  		t.column :notas, :integer
+  	end
+  end
+
+#  def down
+#  	change_table :assistances do |t|
+#  		t.column :notas, :string
+#  	end
+#  end
+end

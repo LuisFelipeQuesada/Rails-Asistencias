@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Asistencia:</b>
+  <%= @assistance.name %>
+</p>
+<p>
+  <b>Departamento donde se realizará la asistencia:</b>
+  <%= @assistance.department.name %>
+</p>
+<p>
+  <b>Horas que se debn cumplir:</b>
+  <%= @assistance.horas %>
+</p>
+<p>
+  <b>Notas requeridas:</b>
+  <%= @assistance.notas %>
+</p>
+<p>
+  <b>Requisitos:</b>
+  <% if @assistance.requirements != "" %>
+  	<%= @assistance.requirements %>
+  <% else %>
+  	Ninguno
+  <% end %>
+</p>
+<p>
+  <b>Tipo de asistencia:</b>
+  <%= @assistance.tipo_asistencium.tipo %>
+</p>
+<p>
+  <b>Fecha de vencimiento (Para realizar la aplicación):</b>
+  <%= @assistance.vencimiento %>
+</p>
+<p>
+  <b>Disponibilidad:</b>
+  <%= @assistance.tipo_asistencium.tipo %>
+</p>
+
+<%= link_to 'Editar', edit_assistance_path(@assistance) %> |
+<%= link_to 'Volver', assistances_path %>

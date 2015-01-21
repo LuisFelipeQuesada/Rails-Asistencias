@@ -1,0 +1,26 @@
+<div id="init">
+		<div id="welcome">
+			<h2>
+				Bienvenido.
+			</h2>
+			<p>
+				Haciendo uso de este sistema podrás observar las asistencias que actualmente se encuentran disponibles en el Tecnológico de Costa Rica y que te permitirán cumplir con los requisitos de tu beca, e incluso, sino cuentas con una, en el sistema también se encuentran asistencias disponibles para proyectos de investigación o por servicios profesionales.
+			</p>
+		</div>
+		<div id="login_div">
+			<h2>Ingrese con alguno de los siguientes servicios sociales</h2>
+			<ul>
+				<li>
+					<a href="/auth/facebook" class="login_a">
+						<%= image_tag "facebook.png", :size=>"64x64", :alt => "Facebook" %>
+					</a>
+				</li>
+				<li>
+					<a href="/auth/twitter" class="login_a">
+						<%= image_tag "twitter.png", :size=>"64x64", :alt => "Twitter" %>
+					</a>
+				</li>
+			</ul>
+			<%= link_to "Administrativos ingresar aquí", 'login' %>
+		</div>
+</div>

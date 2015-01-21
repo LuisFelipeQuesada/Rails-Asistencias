@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre de usuario:</b>
+  <%= @administrative_user.username %>
+</p>
+
+
+<%= link_to 'Editar', edit_administrative_user_path(@administrative_user) %> |
+<%= link_to 'Volver', administrative_users_path %>

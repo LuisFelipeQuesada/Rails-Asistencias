@@ -1,0 +1,6 @@
+<h1>Editar el tipo asistencia</h1>
+
+<%= render 'form' %>
+
+<!--= link_to 'Más detalles', @tipo_asistencium %-->
+<%= link_to 'Volver', tipo_asistencia_path %>

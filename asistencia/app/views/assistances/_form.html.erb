@@ -1,0 +1,62 @@
+<%= form_for(@assistance) do |f| %>
+  <% if @assistance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assistance.errors.count, "error") %> prohibited this assistance from being saved:</h2>
+
+      <ul>
+      <% @assistance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<div id="left">
+		<div class="field">
+		  <%= f.label :name, "Nombre" %><br />
+		  <%= f.text_field :name %>
+		</div>
+		<div class="field">
+		  <%= f.label :department_id, "Seleccione el departamento que ofrece la asistencia" %><br />
+			<% dep_array = Department.all.map { |dep| [dep.name, dep.id] } %>
+			<%= f.select :department_id, options_for_select(dep_array, @assistance.department_id) %>
+		</div>
+		<div class="field">
+		  <%= f.label :horas, "Horas de dedicación (Semanales)" %><br />
+		  <%= f.text_field :horas %>
+		</div>
+		<div class="field">
+		  <%= f.label :disponibilidad, "Disponibilidad de la asistencia" %><br />
+		  <%= f.radio_button :disponibilidad, "true" %><%= f.label "Disponibilidad" %>
+		  <%= f.radio_button :disponibilidad, "false" %><%= f.label "No Disponible" %>
+		</div>
+		<div class="field">
+		  <%= f.label :vencimiento, "Fecha de vencimiento (Para aplicar por la asistencia)" %><br />
+		  <%= f.date_select :vencimiento %>
+		</div>
+	</div>
+	<div id="right">
+		<div class="field">
+		  <%= f.label :notas, "Notas requeridas" %><br />
+		  <%= f.number_field :notas %>
+		</div>
+		<div class="field">
+		  <%= f.label :tipo_asistencia_id, "Seleccione el tipo de asistencia que se ofrecerá" %><br />
+			<% tipo_array = TipoAsistencium.all.map { |tipo| [tipo.tipo, tipo.id] } %>
+			<%= f.select :tipo_asistencia_id, options_for_select(tipo_array, @assistance.tipo_asistencia_id) %>
+		</div>
+		<div class="field">
+		  <%= f.label :requirements, "Otros Requisitos" %><br />
+		  <%= f.text_area(:requirements, :size=>"40x5") %>
+		</div>
+		<div class="actions">
+		  <%= link_to 'Volver', assistances_path %> | <%= f.submit "Guardar Asistencia" %>
+		</div>
+	</div>
+	<div id="errors">
+		<p id="name_errors"></p>
+		<p id="horas_errors"></p>
+		<p id="notas_errors"></p>
+	</div>
+<% end %>
+

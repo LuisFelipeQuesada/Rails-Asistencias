@@ -1,0 +1,7 @@
+class TipoAsistencium < ActiveRecord::Base
+  has_one :assistance, :foreign_key => "tipo_asistencia_id"
+  attr_accessible :tipo, :id
+  
+  validates :tipo, :presence => {:message => "Debe ingresar un nombre para la consulta"}
+end
+

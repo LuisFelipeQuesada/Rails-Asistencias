@@ -1,0 +1,28 @@
+<div>
+<h1>Lista de requerimientos</h1>
+
+	<% if current_admin_user.username == "root" %>
+		<%= link_to 'New Requirement', new_requirement_path %>
+	<% end %>
+<br />
+<table>
+  <tr>
+    <th>Requerimientos</th>
+    <th>Opciones</th>
+  </tr>
+
+<% @requirements.each do |requirement| %>
+  <tr>
+    <td><%= requirement.requirement %></td>
+    <td>
+    	<% if current_admin_user.username == "root" %>
+    		<%= link_to 'Ver', requirement %> |
+    		<%= link_to 'Editar', edit_requirement_path(requirement) %> |
+    		<%= link_to 'Eliminar', requirement, method: :delete, data: { confirm: '¿Está seguro(a)?' } %>
+    	<% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</div>
+
